@@ -1,0 +1,86 @@
+
+
+<div class="container">
+    <a>Model Bianca</a>
+<div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      @for (group of cardGroups; let i = $index; track $index) {
+        <div class="carousel-item" [class.active]="i === 0">
+          <div class="d-flex justify-content-center gap-5 flex-wrap">
+            @for (card of group; track card.title) {
+              <div class="card" style="width: 10rem;">
+                <img [src]="card.image" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ card.title }}</h5>
+                  <p class="card-text">{{ card.text }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  
+    <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon bg-dark rounded-circle"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon bg-dark rounded-circle"></span>
+    </button>
+  </div>
+  <a>Model Bianca</a>
+  <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        @for (group of cardGroups; let i = $index; track $index) {
+          <div class="carousel-item" [class.active]="i === 0">
+            <div class="d-flex justify-content-center gap-5 flex-wrap">
+              @for (card of group; track card.title) {
+                <div class="card" style="width: 10rem;">
+                  <img [src]="card.image" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ card.title }}</h5>
+                    <p class="card-text">{{ card.text }}</p>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    
+      <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle"></span>
+      </button>
+    </div>
+    <a>Model Bianca</a>
+    <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          @for (group of cardGroups; let i = $index; track $index) {
+            <div class="carousel-item" [class.active]="i === 0">
+              <div class="d-flex justify-content-center gap-5 flex-wrap">
+                @for (card of group; track card.title) {
+                  <div class="card" style="width: 10rem;">
+                    <img [src]="card.image" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ card.title }}</h5>
+                      <p class="card-text">{{ card.text }}</p>
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      
+        <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bg-dark rounded-circle"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon bg-dark rounded-circle"></span>
+        </button>
+      </div>
+</div>
+  
