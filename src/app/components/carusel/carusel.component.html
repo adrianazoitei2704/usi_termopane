@@ -1,0 +1,33 @@
+<div [id]="carouselId" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div 
+        *ngFor="let group of chunkedItems; let i = index" 
+        class="carousel-item"
+        [class.active]="i === 0"
+      >
+        <div class="container">
+          <div class="row justify-content-center g-4">
+            <div class="col-12 col-sm-6 col-md-3" *ngFor="let item of group">
+              <div class="card h-100 text-center">
+                <img [src]="item.path" class="card-img-top img-fluid p-3" [alt]="item.title" style="height: 400px; object-fit: contain;">
+                <div class="card-body">
+                  <h6 class="card-title">{{ item.title }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#' + carouselId" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#' + carouselId" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  

@@ -1,0 +1,19 @@
+.carousel-item {
+    padding: 2rem 0;
+  }
+  
+  .card {
+    transition: transform 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    filter: invert(100%);
+  }
+  

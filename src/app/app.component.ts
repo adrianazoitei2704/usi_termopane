@@ -9,7 +9,7 @@ import { ModelsComponent } from "./components/models/models.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SidebarComponent, HeaderComponent, ShowcaseComponent, AboutUsComponent, ModelsComponent],
+  imports: [RouterOutlet, HeaderComponent, AboutUsComponent, ModelsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

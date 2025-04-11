@@ -9,7 +9,9 @@
       </div>
     </div>
   
+  </section>
 
+<section class="py-5" style="position: relative; overflow: hidden;">
     <div class="row w-100 mb-5 px-3">
       <div class="col-md-8 col-lg-6" data-aos="fade-right" data-aos-offset="500">
         <div class="ms-md-2 ms-lg-5">
@@ -29,4 +31,10 @@
       </div>
     </div>
   </section>
-  
+
+  <section class="py-5" style="position: relative; overflow: hidden;">
+    @for(data of datas; track $index){
+      <app-carusel [data]="data" [carouselId]="'carousel' + $index"></app-carusel>
+    }
+
+  </section>
