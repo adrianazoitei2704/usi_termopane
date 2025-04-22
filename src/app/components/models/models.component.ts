@@ -12,16 +12,20 @@ import { CaruselComponent } from "../carusel/carusel.component";
 export class ModelsComponent implements OnInit{
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  datas = [new Map([
-    ["arte","assets/pvc/arte.png"],
-    ["classic","assets/pvc/classic.png"],
-    ["elegant","assets/pvc/elegant.png"],
-    ["exclusiv","assets/pvc/exclusiv.png"],
-    ["modern","assets/pvc/modern.png"],
-    ["premium","assets/pvc/premium.png"],
-    ["standard","assets/pvc/standard.png"],
-    ["vizual","assets/pvc/vizual.png"],
-  ]),new Map([
+  pvc = 
+    new Map([
+      ["arte","assets/pvc/arte.png"],
+      ["classic","assets/pvc/classic.png"],
+      ["elegant","assets/pvc/elegant.png"],
+      ["exclusiv","assets/pvc/exclusiv.png"],
+      ["modern","assets/pvc/modern.png"],
+      ["premium","assets/pvc/premium.png"],
+      ["standard","assets/pvc/standard.png"],
+      ["vizual","assets/pvc/vizual.png"],
+  ]);
+
+  hpl = 
+  new Map([
     ["biokovo","assets/hpl/biokovo.jpg"],
     ["brijuni","assets/hpl/brijuni.jpg"],
     ["dilj","assets/hpl/dilj.jpg"],
@@ -55,7 +59,9 @@ export class ModelsComponent implements OnInit{
     ["vrana","assets/hpl/vrana.jpg"],
     ["vrsar","assets/hpl/vrsar.jpg"],
     ["zumberak","assets/hpl/zumberak.jpg"],
-  ]),new Map([
+  ]);
+
+  aluminiu = new Map([
     ["basic","assets/aluminiu/basic.png"],
     ["elevated","assets/aluminiu/elevated.png"],
     ["elite","assets/aluminiu/elite.png"],
@@ -66,7 +72,16 @@ export class ModelsComponent implements OnInit{
     ["simple","assets/aluminiu/simple.png"],
     ["smart","assets/aluminiu/smart.png"],
     ["urban","assets/aluminiu/urban.png"],
-  ])];
+  ]);
+
+
+
+  datas = [
+    { type: 'pvc', data: this.pvc, title: 'Panouri PVC'},
+    { type: 'hpl', data: this.hpl, title: 'Panouri HPL' },
+    { type: 'aluminiu', data: this.aluminiu, title: 'Panouri Aluminiu'}
+  ];
+
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       AOS.init({
