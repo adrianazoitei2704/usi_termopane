@@ -12,13 +12,13 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#header">Acasa</a>
+            <a class="nav-link btn btn-primary" href="#header">Acasa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#Despre">Despre noi</a>
+            <a class="nav-link btn btn-primary" href="#Despre">Despre noi</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle btn btn-primary" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Modelele noastre
             </a>
             <ul class="dropdown-menu">
@@ -27,11 +27,149 @@
               <li><a class="dropdown-item" href="#Panouri Aluminiu">Aluminiu</a></li>
             </ul>
           </li>
+          <li>
+            <a class="nav-link btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
+              Contact
+            </a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
+  <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalLabel">Contact</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+              <div class="row">
+                <div class="col-lg-4">
+                  <h5 class="pb-3">Date despre companie</h5>
+                  <div class="d-grid gap-1">
+                    <h6>Denumire</h6>
+                    <p>Panel Exclusive Doors SRL</p>
+                    <h6>C.U.I</h6>
+                    <p>RO33024081</p>
+                    <h6>Nr. Reg. Comertului</h6>
+                    <p>J29/519/2014 </p>
+                    <h6>Cont</h6>
+                    <p>RO15RZBR0000060016636593</p>
+                    <h6>Banca</h6>
+                    <p>Raiffeisen Bank Ploiesti</p>
+                  </div>
+                  <h5 class="pb-3">Date de contact</h5>
+                    <h6>Mobil</h6>
+                    <p>+40 787 820 648</p>
+                    <h6>e-mail</h6>
+                    <ul>
+                      <li>office&#64;panelinternational.ro</li>
+                      <li>catalin&#64;panelinternational.ro</li>
+                      <li>cosmin&#64;panelinternational.ro</li>
+                      <li>panelint&#64;yahoo.com</li>
+                    </ul>
+                </div>
+                <div class="col-sm">
+                  <h5>Completeaza formularul</h5>
+                  <form class="row g-3 needs-validation" novalidate>
+                    <div class="col-md-4">
+                      <label for="validationCustom01" class="form-label">First name</label>
+                      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="validationCustom02" class="form-label">Last name</label>
+                      <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="validationCustomUsername" class="form-label">Username</label>
+                      <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend">3</span>
+                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                          Please choose a username.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="validationCustom03" class="form-label">City</label>
+                      <input type="text" class="form-control" id="validationCustom03" required>
+                      <div class="invalid-feedback">
+                        Please provide a valid city.
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <label for="validationCustom04" class="form-label">State</label>
+                      <select class="form-select" id="validationCustom04" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>...</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        Please select a valid state.
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <label for="validationCustom05" class="form-label">Zip</label>
+                      <input type="text" class="form-control" id="validationCustom05" required>
+                      <div class="invalid-feedback">
+                        Please provide a valid zip.
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <label class="form-check-label" for="invalidCheck">
+                          Agree to terms and conditions
+                        </label>
+                        <div class="invalid-feedback">
+                          You must agree before submitting.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-primary" type="submit">Submit form</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">inchideti</button>
+        </div>
+        <script>
+          (() => {
+        'use strict'
+      
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+      
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+      
+            form.classList.add('was-validated')
+          }, false)
+        })
+      })()
+        </script>
+      </div>
+    </div>
+  </div>
+  
   <!-- Hero text -->
   <div class="hero-content text-center">
     <h1>Bine ati venit la Panel Exclusive Doors</h1>
@@ -40,6 +178,5 @@
   <div class="left-vertical-triangle"></div>
   <div class="right-vertical-triangle"></div>
   <div class="angled-frame"></div>
-
-  
 </header>
+
