@@ -1,40 +1,52 @@
-<header id="header" class="hero-section">
+<header id="Acasa" class="hero-section">
 
   <div class="hero-bg" [class.zoomed]="scrolled"></div>
 
   <nav class="navbar fixed-top navbar-expand-lg" [class.scrolled]="scrolled">
     <div class="container">
+      <!-- Logo & Brand -->
       <a class="navbar-brand" href="#">
-        <img src="assets/logo.png" width="40" height="40" class="d-inline-block align-top" alt="">
+        <img src="assets/logo.png" width="40" height="40" class="d-inline-block align-top" alt="Company Logo">
         Panel Exclusive Doors
       </a>
+  
+      <!-- Toggler Button for Mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Collapsible Menu -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link btn btn-primary" href="#header">Acasa</a>
+            <a class="nav-link btn btn-primary" (click)="onWindowScroll('Acasa')">Acasa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn btn-primary" href="#Despre">Despre noi</a>
+            <a class="nav-link btn btn-primary" (click)="onWindowScroll('Despre')">Despre noi</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle btn btn-primary" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle btn btn-primary" href="#" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false" (click)="$event.preventDefault()">
               Modelele noastre
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#Panouri PVC">PVC</a></li>
-              <li><a class="dropdown-item" href="#Panouri HPL">HPL</a></li>
-              <li><a class="dropdown-item" href="#Panouri Aluminiu">Aluminiu</a></li>
+              <li><a class="dropdown-item" (click)="onWindowScroll('Panouri PVC')">PVC</a></li>
+              <li><a class="dropdown-item" (click)="onWindowScroll('Panouri HPL')">HPL</a></li>
+              <li><a class="dropdown-item" (click)="onWindowScroll('Panouri Aluminiu')">Aluminiu</a></li>
             </ul>
           </li>
-          <li>
-            <a class="nav-link btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
-              Contact
-            </a>
+          <li class="nav-item">
+            <a class="nav-link btn btn-primary" (click)="onWindowScroll('Galerie')">Galerie</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">Contact</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  
 
   <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
@@ -65,45 +77,70 @@
                     <p>+40 787 820 648</p>
                     <h6>e-mail</h6>
                     <ul>
+                      <li>panelint&#64;yahoo.com</li>
                       <li>office&#64;panelinternational.ro</li>
                       <li>catalin&#64;panelinternational.ro</li>
-                      <li>cosmin&#64;panelinternational.ro</li>
-                      <li>panelint&#64;yahoo.com</li>
                     </ul>
                 </div>
                 <div class="col-sm">
                   <h5>Completeaza formularul</h5>
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                    <!-- First Name -->
                     <div class="col-md-6">
-                      <label for="validationCustom01" class="form-label">First name</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                      <label for="validationCustom02" class="form-label">Last name</label>
-                      <input type="text" class="form-control" >
-                  
-                    </div>
-                    <div class="col-md-8">
-                      <label for="validationCustom03" class="form-label">Email</label>
-                      <input type="text" class="form-control">
-                      
-                    </div>
-                    <div class="col-md-8">
-                      
-                    </div>
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                        <label class="form-check-label" for="invalidCheck">
-                          Agree to terms and conditions
-                        </label>
-                        <div class="invalid-feedback">
-                          You must agree before submitting.
-                        </div>
+                      <label for="firstName" class="form-label">Prenume</label>
+                      <input id="firstName" type="text" class="form-control" formControlName="firstName">
+                      <div *ngIf="profileForm.get('firstName')?.touched && profileForm.get('firstName')?.invalid" class="text-danger">
+                        Prenume este obligatoriu.
                       </div>
                     </div>
+                  
+                    <!-- Last Name -->
+                    <div class="col-md-6">
+                      <label for="lastName" class="form-label">Nume</label>
+                      <input id="lastName" type="text" class="form-control" formControlName="lastName">
+                      <div *ngIf="profileForm.get('lastName')?.touched && profileForm.get('lastName')?.invalid" class="text-danger">
+                        Nume este obligatoriu.
+                      </div>
+                    </div>
+                  
+                    <!-- Email -->
+                    <div class="col-md-8">
+                      <label for="email" class="form-label">Email</label>
+                      <input id="email" type="email" class="form-control" formControlName="email" placeholder="exemplu@yahoo.com">
+                      <div *ngIf="profileForm.get('email')?.touched && profileForm.get('email')?.invalid" class="text-danger">
+                        <span *ngIf="profileForm.get('email')?.errors?.['required']">Email este obligatoriu.</span>
+                        <span *ngIf="profileForm.get('email')?.errors?.['email']">Formatul emailului nu este valid.</span>
+                      </div>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="col-md-6">
+                      <label for="phone" class="form-label">Telefon</label>
+                      <input id="phone" type="tel" class="form-control" formControlName="phone" placeholder="07XXXXXXXX">
+                      <div *ngIf="profileForm.get('phone')?.touched && profileForm.get('phone')?.invalid" class="text-danger">
+                        <span *ngIf="profileForm.get('phone')?.errors?.['required']">Telefonul este obligatoriu.</span>
+                        <span *ngIf="profileForm.get('phone')?.errors?.['pattern']">Format invalid. Exemplu: 07XXXXXXXX.</span>
+                      </div>
+                    </div>
+                  
+                    <!-- Terms & Conditions -->
                     <div class="col-12">
-                      <button class="btn btn-primary" type="submit">Submit form</button>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="agreeTerms" formControlName="agreeTerms">
+                        <label class="form-check-label" for="agreeTerms">
+                          Sunt de acord cu termenii și condițiile
+                        </label>
+                      </div>
+                      <div *ngIf="profileForm.get('agreeTerms')?.touched && profileForm.get('agreeTerms')?.invalid" class="text-danger">
+                        Trebuie să acceptați termenii înainte de trimitere.
+                      </div>
+                    </div>
+                  
+                    <!-- Submit Button -->
+                    <div class="col-12">
+                      <button class="btn btn-primary" type="submit" [disabled]="profileForm.invalid">
+                        Trimite Formular
+                      </button>
                     </div>
                   </form>
                 </div>
@@ -112,7 +149,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">inchideti</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Inchideti</button>
         </div>
       </div>
     </div>
