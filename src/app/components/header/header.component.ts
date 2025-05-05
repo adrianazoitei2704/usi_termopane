@@ -28,6 +28,7 @@ export class HeaderComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll(sectionId: string): void {
+    this.scrolled = window.pageYOffset > 50;
     const yOffset = -70; 
     const element = document.getElementById(sectionId);
     if (element) {

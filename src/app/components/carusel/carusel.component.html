@@ -1,4 +1,5 @@
 <div [id]="carouselId" class="carousel slide" data-bs-ride="carousel">
+  <p class="lead pt-3">{{carouselDescription}}</p>
     <div class="carousel-inner">
       <div 
         *ngFor="let group of chunkedItems; let i = index" 
@@ -7,7 +8,7 @@
       >
         <div class="container">
           <div class="row justify-content-center g-4">
-            <div class="col-12 col-sm-6 col-md-3" *ngFor="let item of group">
+            <div class="col-6 col-sm-6 col-md-3" *ngFor="let item of group">
               <div class="card h-100 text-center">
                 <img [src]="item.path" class="card-img-top img-fluid p-3" [alt]="item.title" style="height: 400px; object-fit: contain;">
                 <div class="card-body">
@@ -30,6 +31,5 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-  
   
   

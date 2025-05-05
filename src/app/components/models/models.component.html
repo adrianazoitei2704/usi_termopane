@@ -36,7 +36,8 @@
     @for (item of datas; track item.type) {
       <div class ="container mb-4">
           <h2 class="text-center display-6 fw-semibold mb-3" [id]="item.title">{{ item.title }}</h2>
-        <app-carusel [data]="item.data" [carouselId]="item.type"></app-carusel>
+        <app-carusel [data]="item.data" [carouselId]="item.type" [carouselDescription]="item.desc"></app-carusel>
       </div>
+      <hr class="my-1" style="border-top: 1px solid #696969;">
     }
   </section>

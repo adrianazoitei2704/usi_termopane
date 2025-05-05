@@ -1,19 +1,43 @@
 .carousel-item {
     padding: 2rem 0;
   }
-  
+  .slide{
+    padding-bottom: 100px;
+  }
   .card {
     transition: transform 0.3s ease;
     border: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+    background: transparent;
   }
   
   .card:hover {
     transform: translateY(-5px);
   }
-  
+  .carousel-control-prev{
+    left: -120px
+  }
+  .carousel-control-next{
+    right: -120px
+  }
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     filter: invert(100%);
   }
-  
+  @media(max-width: 1200px){
+    .carousel-control-prev{
+      left: -80px
+    }
+    .carousel-control-next{
+      right: -80px
+    }
+  }
+
+  /* @media(min-width: 600px){
+    .carousel-control-prev{
+      left: -10px
+    }
+    .carousel-control-next{
+      right: -10px
+    }
+  } */

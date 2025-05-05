@@ -52,7 +52,6 @@ export class ModelsComponent implements OnInit{
     ["psunj","assets/hpl/psunj.jpg"],
     ["rastoke","assets/hpl/rastoke.jpg"],
     ["risnjak","assets/hpl/risnjak.jpg"],
-    ["side_elements","assets/hpl/side_elements.jpg"],
     ["skradin","assets/hpl/skradin.jpg"],
     ["ston","assets/hpl/ston.jpg"],
     ["telascica","assets/hpl/telascica.jpg"],
@@ -74,12 +73,14 @@ export class ModelsComponent implements OnInit{
     ["urban","assets/aluminiu/urban.png"],
   ]);
 
-
-
+  aluminiumDesc: string = "Ușile cu panel din aluminiu sunt o alegere excelentă datorită durabilității ridicate, rezistenței la intemperii și aspectului modern. Oferă izolație termică și fonică eficientă, necesită întreținere minimă și pot fi personalizate ușor pentru a se potrivi oricărui stil arhitectural. Sunt ideale pentru cei care caută siguranță, estetică și longevitate."
+  hplDesc: string = "Ușile cu panel din HPL  sunt apreciate pentru rezistența lor excelentă la umezeală, zgârieturi și impact. Sunt durabile, ușor de întreținut și ideale pentru zone cu trafic intens sau expuse la condiții dificile. În plus, oferă un aspect elegant și pot imita diverse texturi sau culori."
+  pvcDesc: string = "Ușile cu panel din PVC sunt o soluție accesibilă și eficientă, oferind o bună izolație termică și fonică, rezistență la umezeală și întreținere ușoară. Sunt ideale pentru locuințe datorită duratei de viață lungi și varietății de modele și culori disponibile."
+  
   datas = [
-    { type: 'pvc', data: this.pvc, title: 'Panouri PVC'},
-    { type: 'hpl', data: this.hpl, title: 'Panouri HPL' },
-    { type: 'aluminiu', data: this.aluminiu, title: 'Panouri Aluminiu'}
+    { type: 'pvc', data: this.pvc, title: 'Panouri PVC',desc: this.pvcDesc},
+    { type: 'hpl', data: this.hpl, title: 'Panouri HPL' ,desc: this.hplDesc},
+    { type: 'aluminiu', data: this.aluminiu, title: 'Panouri Aluminiu', desc: this.aluminiumDesc}
   ];
 
   ngOnInit(): void {
