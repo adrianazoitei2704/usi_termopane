@@ -122,6 +122,15 @@
                         <span *ngIf="profileForm.get('phone')?.errors?.['pattern']">Format invalid. Exemplu: 07XXXXXXXX.</span>
                       </div>
                     </div>
+
+                     <!-- Message Box -->
+                <div class="col-12">
+                 <label for="message" class="form-label">Mesaj</label>
+                    <textarea id="message" rows="4" class="form-control" formControlName="message" placeholder="Scrieți un mesaj..."></textarea>
+                <div *ngIf="profileForm.get('message')?.touched && profileForm.get('message')?.invalid" class="text-danger">
+                  Mesajul este obligatoriu.
+                </div>
+                </div>
                   
                     <!-- Terms & Conditions -->
                     <div class="col-12">
@@ -147,9 +156,6 @@
               </div>
 
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Inchideti</button>
         </div>
       </div>
     </div>

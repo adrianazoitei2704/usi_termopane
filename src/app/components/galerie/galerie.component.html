@@ -1,36 +1,54 @@
 <div id="Galerie" class="container py-5">
-    <div class="ms-md-2 ms-lg-5">
-        <h2 class="text-center display-5 fw-bold">Galerie Foto</h2>
-    </div>
-    <p class="lead">                    </p>
-    <div class="row w-100 mb-5 px-3">
-        <div class="col-md-8 col-lg-6" data-aos="fade-right" data-aos-offset="500">
-          <div class="ms-md-2 ms-lg-5">
-            <p class="lead">Urmatoarele poze ilustreaza cateva dintre montajele realizate.</p>
-          </div>
-        </div>
-      </div>
-    <div class="row g-4">
-      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let image of images">
-        <div class="card border-0 shadow-sm">
-          <img [src]="image.src" [alt]="image.alt" class="card-img-top img-fluid" (click)="openImage(image)">
-        </div>
+  <div class="ms-md-2 ms-lg-5">
+    <h2 class="text-center display-5 fw-bold">Galerie Foto</h2>
+  </div>
+
+ 
+        <p class="lead pt-3">O persoana pregatita in montarea termopanelor este esentială pentru a asigura o izolatie termica si fonica optima, prevenind pierderile de caldura, infiltratiile de apa si defectele de functionare ale ferestrelor. Montajul corect prelungeste durata de viată a tamplariei si contribuie la eficienta energetica a locuintei, reducand costurile pe termen lung.</p>
+        <p class="lead "> In urmatoarele fotografii puteti observa cateva dintre montajele realizate.</p>
+
+  <!-- Gallery Thumbnails -->
+  <div class="lead row g-4">
+    <div class="col-6 col-sm-4 col-md-2" *ngFor="let image of images">
+      <div class="card border-0 shadow-lg rounded-4 hover-zoom overflow-hidden">
+        <img
+          [src]="image.src"
+          [alt]="image.alt"
+          class="card-img-top img-fluid gallery-img"
+          (click)="openImage(image)"
+        />
       </div>
     </div>
   </div>
-  
-  <!-- Modal -->
-  <div class="modal fade" tabindex="-1" [ngClass]="{ 'd-block': isModalOpen, 'd-none': !isModalOpen }" (click)="closeImage()">
-    <div class="modal-dialog modal-dialog-centered modal-lg" (click)="$event.stopPropagation()">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">{{ selectedImage?.alt }}</h5>
-          <button type="button" class="btn-close" (click)="closeImage()"></button>
-        </div>
-        <div class="modal-body text-center">
-          <img [src]="selectedImage?.src" class="img-fluid rounded">
-        </div>
+</div>
+
+<!-- Modal for full-size image -->
+<div
+  class="modal"
+  tabindex="-1"
+  [ngClass]="{ 'd-block': isModalOpen, 'd-none': !isModalOpen }"
+  style="background-color: rgba(0, 0, 0, 0.8);"
+  (click)="closeImage()"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg" (click)="$event.stopPropagation()">
+    <div class="modal-content bg-white text-dark border-0">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">{{ selectedImage?.alt }}</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-dark"
+          aria-label="Close"
+          (click)="closeImage()"
+        ></button>
+      </div>
+      <div class="modal-body text-center">
+        <img
+            [src]="selectedImage?.src"
+            [alt]="selectedImage?.alt"
+            class="img-fluid rounded"
+            style="max-height: 80vh; max-width: 100%; object-fit: contain;"
+        />
       </div>
     </div>
   </div>
-  
+</div>
