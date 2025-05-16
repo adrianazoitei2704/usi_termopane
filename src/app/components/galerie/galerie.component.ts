@@ -37,8 +37,8 @@ export class GalleryComponent {
     this.isModalOpen = true;  // Open the modal
   }
 
-  get selectedImage() {
-  return this.images[this.selectedImageIndex];
+ get selectedImage() {
+  return this.selectedImageIndex >= 0 ? this.images[this.selectedImageIndex] : undefined;
 }
 
 closeImage(event?: Event) {

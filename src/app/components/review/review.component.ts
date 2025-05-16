@@ -1,95 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-review',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './review.component.html',
   styleUrl: './review.component.css'
 })
-export class ReviewComponent {
-  reviews = [
-    {
-      name: 'Adrian Azoitei',
-      email: 'adriana_shamanca_ta@yahoo.com',
-      phone: '0792696969',
-      message: 'Montare rapida si seriozitate!',
-      rating: 5
-    },
-    {
-      name: 'Adrian Azoitei',
-      email: 'adriana_shamanca_ta@yahoo.com',
-      phone: '0792696969',
-      message: 'Montare rapida si seriozitate!',
-      rating: 5
-    },
-    {
-      name: 'Adrian Azoitei',
-      email: 'adriana_shamanca_ta@yahoo.com',
-      phone: '0792696969',
-      message: 'Montare rapida si seriozitate!',
-      rating: 5
-    },
-    {
-      name: 'Adrian Azoitei',
-      email: 'adriana_shamanca_ta@yahoo.com',
-      phone: '0792696969',
-      message: 'Montare rapida si seriozitate!',
-      rating: 5
-    },
-    {
-      name: 'Adrian Azoitei',
-      email: 'adriana_shamanca_ta@yahoo.com',
-      phone: '0792696969',
-      message: 'Montare rapida si seriozitate!',
-      rating: 5
-    },
-    {
-      name: 'Adrian Azoitei',
-      email: 'adriana_shamanca_ta@yahoo.com',
-      phone: '0792696969',
-      message: 'Montare rapida si seriozitate!',
-      rating: 5
-    },
-    {
-      name: 'Adrian Azoitei',
-      email: 'adriana_shamanca_ta@yahoo.com',
-      phone: '0792696969',
-      message: 'Montare rapida si seriozitate!',
-      rating: 5
-    },
-    {
-      name: 'Adrian Azoitei',
-      email: 'adriana_shamanca_ta@yahoo.com',
-      phone: '0792696969',
-      message: 'Montare rapida si seriozitate!',
-      rating: 5
-    },
-    {
-      name: 'Adrian Azoitei',
-      email: 'adriana_shamanca_ta@yahoo.com',
-      phone: '0792696969',
-      message: 'Montare rapida si seriozitate!',
-      rating: 5
-    }
-    
-  ];
-  hoveredRating = 0;
+export class ReviewComponent implements OnInit {
+  apiUrl = 'https://sheetdb.io/api/v1/qwf91j0kjs0u7'; // Replace with your actual SheetDB URL
 
-  setRating(rating: number) {
-    this.newReview.rating = rating;
-  }
-  
-  setHovered(rating: number) {
-    this.hoveredRating = rating;
-  }
-  
-  clearHovered() {
-    this.hoveredRating = 0;
-  }
+  constructor(private http: HttpClient) {}
+
+  reviews: any[] = [];
   visibleCount = 4;
+  hoveredRating = 0;
 
   newReview = {
     name: '',
@@ -99,15 +27,49 @@ export class ReviewComponent {
     rating: 0
   };
 
+  ngOnInit() {
+    this.fetchReviews();
+  }
+
+  fetchReviews() {
+    this.http.get<any[]>(this.apiUrl).subscribe((data: any) => {
+      // SheetDB returns an array wrapped inside "data" key
+      this.reviews = data;
+    });
+  }
+
   addReview() {
-    if (this.newReview.name && this.newReview.email && this.newReview.message && this.newReview.rating > 0) {
-      this.reviews.unshift({ ...this.newReview });
-      this.newReview = { name: '', email: '', phone: '', message: '', rating: 0 };
+    if (
+      this.newReview.name &&
+      this.newReview.email &&
+      this.newReview.message &&
+      this.newReview.rating > 0
+    ) {
+      const payload = {
+        data: [this.newReview]
+      };
+
+      this.http.post(this.apiUrl, payload).subscribe(() => {
+        this.reviews.unshift({ ...this.newReview });
+        this.newReview = { name: '', email: '', phone: '', message: '', rating: 0 };
+      });
     }
   }
 
   loadMore() {
     this.visibleCount += 4;
+  }
+
+  setRating(rating: number) {
+    this.newReview.rating = rating;
+  }
+
+  setHovered(rating: number) {
+    this.hoveredRating = rating;
+  }
+
+  clearHovered() {
+    this.hoveredRating = 0;
   }
 
   getStars(rating: number): string[] {

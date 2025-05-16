@@ -33,7 +33,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" (click)="$event.stopPropagation()">
     <div class="modal-content bg-white text-dark border-0">
       <div class="modal-header border-0">
-        <h5 class="modal-title text-center w-100 m-0">{{ selectedImage.alt }}</h5>
+        <h5 class="modal-title text-center w-100 m-0">{{ selectedImage?.alt }}</h5>
         <button
           type="button"
           class="btn-close btn-close-dark"
@@ -52,8 +52,8 @@
   </button>
 
   <img
-    [src]="selectedImage.src"
-    [alt]="selectedImage.alt"
+    [src]="selectedImage?.src"
+    [alt]="selectedImage?.alt"
     class="img-fluid rounded"
     style="max-height: 80vh; max-width: 100%; object-fit: contain;"
   />
