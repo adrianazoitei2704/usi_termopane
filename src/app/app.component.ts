@@ -7,10 +7,12 @@ import { ShowcaseComponent } from "./components/showcase/showcase.component";
 import { AboutUsComponent } from "./components/about-us/about-us.component";
 import { ModelsComponent } from "./components/models/models.component";
 import { GalleryComponent } from "./components/galerie/galerie.component";
+import { ReviewComponent } from "./components/review/review.component";
+import { FooterComponent } from "./components/footer/footer.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, AboutUsComponent, ModelsComponent, GalleryComponent],
+  imports: [RouterOutlet, HeaderComponent, AboutUsComponent, ModelsComponent, GalleryComponent, ReviewComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

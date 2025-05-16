@@ -1,0 +1,60 @@
+<div class="container mt-4">
+    <h3>Vrei sa scrii o recenzie?</h3>
+    <form (ngSubmit)="addReview()" class="mb-4">
+      <div class="mb-2">
+        <input type="text" class="form-control" placeholder="Nume" [(ngModel)]="newReview.name" name="name" required>
+      </div>
+      <div class="mb-2">
+        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="newReview.email" name="email" required>
+      </div>
+      <div class="mb-2">
+        <input type="tel" class="form-control" placeholder="Telefon (Optional)" [(ngModel)]="newReview.phone" name="phone">
+      </div>
+      <div class="mb-2">
+        <textarea class="form-control" placeholder="Scrie un review" [(ngModel)]="newReview.message" name="message" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Acroda o nota:</label>
+        <div class="star-rating">
+          <span
+            *ngFor="let r of [1, 2, 3, 4, 5]"
+            (click)="setRating(r)"
+            (mouseenter)="setHovered(r)"
+            (mouseleave)="clearHovered()"
+            [class.filled]="r <= (hoveredRating || newReview.rating)"
+            class="star"
+          >
+            ★
+          </span>
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Trimite Recenzia</button>
+    </form>
+  
+    <h4>Recenzii</h4>
+    <div class="row g-4">
+        <div class="col-md-6" *ngFor="let review of reviews.slice(0, visibleCount)">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-3">
+                <div class="profile-circle me-3">
+                  {{ review.name[0] }}
+                </div>
+                <div>
+                  <h5 class="mb-0">{{ review.name }}</h5>
+                  <small class="text-muted">{{ review.email }} | {{ review.phone }}</small>
+                </div>
+              </div>
+              <p class="card-text mb-2">{{ review.message }}</p>
+              <div>
+                <span *ngFor="let star of getStars(review.rating)" style="color: gold; font-size: 1.2rem;">{{ star }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="visibleCount < reviews.length" class="text-center">
+        <button class="btn btn-outline-secondary mt-4" (click)="loadMore()">Incarca mai multe</button>
+      </div>
+  

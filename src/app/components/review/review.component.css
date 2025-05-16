@@ -1,0 +1,39 @@
+textarea {
+    resize: vertical;
+  }
+  label input[type="radio"] {
+    margin-right: 5px;
+  }
+  .star-rating {
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .star {
+    transition: color 0.2s;
+    margin-right: 4px;
+  }
+  
+  .star.filled {
+    color: gold;
+  }
+
+  .profile-circle {
+    width: 40px;
+    height: 40px;
+    background-color: #6c757d;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  .card {
+    border: none;
+    border-radius: 0.75rem;
+  }
+  

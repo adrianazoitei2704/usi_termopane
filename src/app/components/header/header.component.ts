@@ -1,4 +1,4 @@
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import {Validators} from '@angular/forms';
@@ -6,6 +6,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common'; 
 import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
 
+declare var bootstrap: any;
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -15,8 +16,11 @@ import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
 })
 export class HeaderComponent {
 
-  scrolled = false;
 
+  scrolled = false;
+  showmodal = "";
+  @ViewChild('contactModal') contactModal!: ElementRef;
+  @ViewChild('successToast') successToast!: ElementRef;
   private formBuilder = inject(FormBuilder);
    profileForm = this.formBuilder.group(
     { 
@@ -40,30 +44,51 @@ export class HeaderComponent {
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   }
-
+  descarca(catalog: string) {
+    const link = document.createElement('a');
+    if(catalog === 'hpl'){
+      link.href = 'assets/Cataloage/2020-Grad-Export_PVC-HPL_DE-ENG124pg.pdf'; 
+      link.download = 'Catalog_PVC-HPL.pdf';      
+      link.target = '_blank';
+    }
+    if(catalog === 'alu'){
+      link.href = 'assets/Cataloage/2020-Grad-Export_ALU_DE-ENG131pg.pdf'; 
+      link.download = 'Catalog_ALUMINIU.pdf';      
+      link.target = '_blank';
+    }
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    }
   onSubmit(): void {
     if (this.profileForm.valid) {
       console.log('Form submitted:', this.profileForm.value);
       // You can also reset form or close modal
-    } 
-    emailjs.send('service_a8yp6qu','template_59arr0b',{...this.profileForm.value}, { publicKey: 'Ry10onoHzAIZpM_q5'})
-    .then(
-        () => {
-          console.log('SENT');
-        },
-        (error) => {
-          console.log('FAILED', (error as EmailJSResponseStatus).text);
-        },
-      );
+      this.profileForm.reset();
+      const modalInstance = bootstrap.Modal.getInstance(this.contactModal.nativeElement);
+      modalInstance.hide();
+      const toast = bootstrap.Modal.getInstance(this.successToast.nativeElement);
+      toast.show();
+    //   emailjs.send('service_a8yp6qu','template_59arr0b',{...this.profileForm.value}, { publicKey: 'Ry10onoHzAIZpM_q5'})
+    // .then(
+    //     () => {
+    //       console.log('SENT');
+    //     },
+    //     (error) => {
+    //       console.log('FAILED', (error as EmailJSResponseStatus).text);
+    //     },
+    //   );
 
-      emailjs.send('service_a8yp6qu','template_atzx9l7',{...this.profileForm.value}, { publicKey: 'Ry10onoHzAIZpM_q5'})
-    .then(
-        () => {
-          console.log('SENT');
-        },
-        (error) => {
-          console.log('FAILED', (error as EmailJSResponseStatus).text);
-        },
-      );
+    //   emailjs.send('service_a8yp6qu','template_atzx9l7',{...this.profileForm.value}, { publicKey: 'Ry10onoHzAIZpM_q5'})
+    // .then(
+    //     () => {
+    //       console.log('SENT');
+    //     },
+    //     (error) => {
+    //       console.log('FAILED', (error as EmailJSResponseStatus).text);
+    //     },
+    //   );
+    } 
+    
   }
 }

@@ -36,6 +36,16 @@
               <li><a class="dropdown-item" (click)="onWindowScroll('Panouri Aluminiu')">Aluminiu</a></li>
             </ul>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle btn btn-primary" href="#" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false" (click)="$event.preventDefault()">
+              Descarca Cataloage
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" (click)="descarca('hpl')">Catalog PVC&HPL</a></li>
+              <li><a class="dropdown-item" (click)="descarca('alu')">Catalog Aluminiu</a></li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a class="nav-link btn btn-primary" (click)="onWindowScroll('Galerie')">Galerie</a>
           </li>
@@ -46,9 +56,24 @@
       </div>
     </div>
   </nav>
-  
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false" #successToast>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Succes</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Mesajul a fost primit cu succes is urmeaza sa va contactam in cel mai scurt timp!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false" #contactModal>
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
       <div class="modal-content">
         <div class="modal-header">
@@ -147,7 +172,7 @@
                   
                     <!-- Submit Button -->
                     <div class="col-12">
-                      <button class="btn btn-primary" type="submit" [disabled]="profileForm.invalid">
+                      <button class="btn btn-primary" type="submit" [disabled]="profileForm.invalid" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Trimite Formular
                       </button>
                     </div>

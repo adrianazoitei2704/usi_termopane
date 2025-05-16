@@ -31,7 +31,18 @@ export class CaruselComponent implements OnInit{
     }
   }
   updateChunkedItems() {
-    const itemsPerChunk = window.innerWidth < 600 ? 1 : (window.innerWidth < 768 ? 2 : 4); 
+    var itemsPerChunk = 4;
+    if(window.innerWidth < 1320){
+      itemsPerChunk = 3;
+    }
+    if(window.innerWidth < 780){
+      itemsPerChunk = 2;
+    }
+
+    if(window.innerWidth < 620){
+      itemsPerChunk = 1;
+    }
+    // const itemsPerChunk = window.innerWidth < 600 ? 1 : (window.innerWidth < 850 ? 3 : (window.innerWidth < 650 ? 2 : 4)); 
     this.chunkedItems = this.chunkArray(this.items, itemsPerChunk);
   }
   private chunkArray(arr: any[], chunkSize: number): any[][] {

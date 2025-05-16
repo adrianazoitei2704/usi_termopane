@@ -1,0 +1,42 @@
+section {
+    background-color: #f8f9fa; /* gri foarte deschis */
+  }
+  
+  hr.border-secondary {
+    border-top: 1px solid #adb5bd;
+  }
+  
+  img.rounded-3 {
+    max-height: 100%;
+    object-fit: cover;
+  }
+  .curved-arrow {
+    transition: transform 0.3s ease, stroke 0.3s ease;
+    cursor: pointer;
+  }
+
+  .curved-arrow:hover {
+    transform: scale(1.05);
+    stroke: #0a58ca;
+  }
+  .curved-arrow {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  .curved-arrow:hover {
+    transform: scale(1.1);
+    stroke: #084298;
+  }
+  .custom-container {
+    max-width: 1600px;
+    width: 100%;
+  }
+  .icontitle{
+    display: flex;
+    gap: 10px;
+  }
+  @media(max-width: 1199px){
+    .arrow{
+        display: none;
+    }
+  }
