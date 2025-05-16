@@ -62,6 +62,26 @@ export class HeaderComponent {
     }
   onSubmit(): void {
     if (this.profileForm.valid) {
+       emailjs.send('service_zoeg11c','template_59arr0b',{...this.profileForm.value}, { publicKey: 'Ry10onoHzAIZpM_q5'})
+    .then(
+        () => {
+          console.log('SENT');
+        },
+        (error) => {
+          console.log('FAILED', (error as EmailJSResponseStatus).text);
+        },
+      );
+
+      emailjs.send('service_zoeg11c','template_atzx9l7',{...this.profileForm.value}, { publicKey: 'Ry10onoHzAIZpM_q5'})
+    .then(
+        () => {
+          console.log('SENT');
+        },
+        (error) => {
+          console.log('FAILED', (error as EmailJSResponseStatus).text);
+        },
+      );
+      
       console.log('Form submitted:', this.profileForm.value);
       // You can also reset form or close modal
       this.profileForm.reset();
@@ -69,25 +89,6 @@ export class HeaderComponent {
       modalInstance.hide();
       const toast = bootstrap.Modal.getInstance(this.successToast.nativeElement);
       toast.show();
-    //   emailjs.send('service_a8yp6qu','template_59arr0b',{...this.profileForm.value}, { publicKey: 'Ry10onoHzAIZpM_q5'})
-    // .then(
-    //     () => {
-    //       console.log('SENT');
-    //     },
-    //     (error) => {
-    //       console.log('FAILED', (error as EmailJSResponseStatus).text);
-    //     },
-    //   );
-
-    //   emailjs.send('service_a8yp6qu','template_atzx9l7',{...this.profileForm.value}, { publicKey: 'Ry10onoHzAIZpM_q5'})
-    // .then(
-    //     () => {
-    //       console.log('SENT');
-    //     },
-    //     (error) => {
-    //       console.log('FAILED', (error as EmailJSResponseStatus).text);
-    //     },
-    //   );
     } 
     
   }

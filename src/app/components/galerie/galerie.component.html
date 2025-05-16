@@ -33,7 +33,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" (click)="$event.stopPropagation()">
     <div class="modal-content bg-white text-dark border-0">
       <div class="modal-header border-0">
-        <h5 class="modal-title">{{ selectedImage?.alt }}</h5>
+        <h5 class="modal-title text-center w-100 m-0">{{ selectedImage.alt }}</h5>
         <button
           type="button"
           class="btn-close btn-close-dark"
@@ -41,14 +41,32 @@
           (click)="closeImage()"
         ></button>
       </div>
-      <div class="modal-body text-center">
-        <img
-            [src]="selectedImage?.src"
-            [alt]="selectedImage?.alt"
-            class="img-fluid rounded"
-            style="max-height: 80vh; max-width: 100%; object-fit: contain;"
-        />
-      </div>
+      <div class="modal-body text-center position-relative">
+  <button
+    class="btn btn-dark position-absolute top-50 start-0 translate-middle-y"
+    (click)="prevImage()"
+    style="z-index: 1051;"
+    aria-label="Imaginea anterioară"
+  >
+    ‹
+  </button>
+
+  <img
+    [src]="selectedImage.src"
+    [alt]="selectedImage.alt"
+    class="img-fluid rounded"
+    style="max-height: 80vh; max-width: 100%; object-fit: contain;"
+  />
+
+  <button
+    class="btn btn-dark position-absolute top-50 end-0 translate-middle-y"
+    (click)="nextImage()"
+    style="z-index: 1051;"
+    aria-label="Imaginea următoare"
+  >
+    ›
+  </button>
+</div>
     </div>
   </div>
 </div>

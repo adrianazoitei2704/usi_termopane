@@ -29,17 +29,30 @@ export class GalleryComponent {
     { src: 'assets/montaj/montaj17.jpg', alt: 'Montaj 17' },
   ];
 
-  selectedImage: { src: string; alt: string } | null = null;
+  selectedImageIndex: number = -1;
   isModalOpen = false;
 
   openImage(image: { src: string; alt: string }) {
-    this.selectedImage = image;
+     this.selectedImageIndex = this.images.findIndex(img => img.src === image.src);
     this.isModalOpen = true;  // Open the modal
   }
+
+  get selectedImage() {
+  return this.images[this.selectedImageIndex];
+}
 
 closeImage(event?: Event) {
   if (event) event.stopPropagation(); // Prevent modal from closing when clicking inside
   this.isModalOpen = false;
 }
+
+nextImage() {
+  this.selectedImageIndex = (this.selectedImageIndex + 1) % this.images.length;
+}
+
+prevImage() {
+  this.selectedImageIndex = (this.selectedImageIndex - 1 + this.images.length) % this.images.length;
+}
+
 
 }
