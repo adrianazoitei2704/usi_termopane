@@ -56,6 +56,11 @@ export class HeaderComponent {
       link.download = 'Catalog_ALUMINIU.pdf';      
       link.target = '_blank';
     }
+    if(catalog === 'alu_design'){
+      link.href = 'assets/Cataloage/Catalog_Aluminiu_Design&Technology.pdf'; 
+      link.download = 'Catalog_ALUMINIU(DESIGN&TECHNOLOGY).pdf';      
+      link.target = '_blank';
+    }
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
