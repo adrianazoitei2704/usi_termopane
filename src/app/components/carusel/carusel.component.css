@@ -17,32 +17,42 @@
   .carousel-control-prev{
     left: -110px;
     height: 30px;
-    align-self: center;
+    position: absolute;
+    top: 50%;           
+    transform: translateY(-50%); 
   }
   .carousel-control-next{
     right: -110px;
     height: 30px;
-    align-self: center;
+    position: absolute;
+    top: 50%;           
+    transform: translateY(-50%); 
 
   }
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     filter: invert(100%);
     height: 30px;
-    align-self: center;
+    position: absolute;
+    top: 50%;           
+    transform: translateY(-50%); 
 
   }
   @media(max-width: 1400px){
     .carousel-control-prev{
       left: -20px;
       height: 30px;
-      align-self: center;
+      position: absolute;
+    top: 50%;           
+    transform: translateY(-50%); 
 
     }
     .carousel-control-next{
       right: -20px;
       height: 30px;
-      align-self: center;
+      position: absolute;
+    top: 50%;           
+    transform: translateY(-50%); 
 
     }
   }
