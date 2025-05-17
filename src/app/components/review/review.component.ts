@@ -11,14 +11,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   styleUrl: './review.component.css'
 })
 export class ReviewComponent implements OnInit {
-  apiUrl = 'https://sheetdb.io/api/v1/qwf91j0kjs0u7'; // Replace with your actual SheetDB URL
-
+  apiUrl = 'https://sheetdb.io/api/v1/qwf91j0kjs0u7';
   constructor(private http: HttpClient) {}
 
   reviews: any[] = [];
   visibleCount = 4;
   hoveredRating = 0;
-
+  incarca = "Vezi recenzii"
   newReview = {
     name: '',
     email: '',
@@ -28,7 +27,7 @@ export class ReviewComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.fetchReviews();
+    // this.fetchReviews();
   }
 
   fetchReviews() {
@@ -57,6 +56,13 @@ export class ReviewComponent implements OnInit {
   }
 
   loadMore() {
+    if(this.reviews.length === 0){
+      this.http.get<any[]>(this.apiUrl).subscribe((data: Array<any>) => {
+      // SheetDB returns an array wrapped inside "data" key
+      this.reviews = data.reverse();
+      this.incarca = "Incarca mai multe";
+    });
+    }
     this.visibleCount += 4;
   }
 

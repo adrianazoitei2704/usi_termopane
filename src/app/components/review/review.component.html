@@ -32,7 +32,7 @@
       <button type="submit" class="btn btn-primary">Trimite Recenzia</button>
     </form>
   
-    <h4>Recenzii</h4>
+    <h4 *ngIf="visibleCount < reviews.length">Recenzii</h4>
     <div class="row g-4">
         <div class="col-md-6" *ngFor="let review of reviews.slice(0, visibleCount)">
           <div class="card shadow-sm h-100">
@@ -54,7 +54,7 @@
           </div>
         </div>
       </div>
-      <div *ngIf="visibleCount < reviews.length" class="text-center">
-        <button class="btn btn-outline-secondary mt-4" (click)="loadMore()">Incarca mai multe</button>
+      <div class="text-center">
+        <button class="btn btn-outline-secondary mt-4" (click)="loadMore()">{{incarca}}</button>
       </div>
   
